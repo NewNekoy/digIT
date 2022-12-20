@@ -9,11 +9,21 @@ Player::Player(int width, int height)
 
 void Player::use(std::vector<Tile *> tiles)
 {
-   
-        if (IsKeyDown(KEY_RIGHT)) sprite.x += speed;
-        if (IsKeyDown(KEY_LEFT)) sprite.x -= speed;
-        if (IsKeyDown(KEY_UP)) sprite.y -= speed;
-        if (IsKeyDown(KEY_DOWN)) sprite.y += speed;
+    Vector2 position;
+    position.x = sprite.x;
+    position.y = sprite.y;
+
+    if (IsKeyDown(KEY_RIGHT)) sprite.x += speed;
+    if (IsKeyDown(KEY_LEFT)) sprite.x -= speed;
+    if (IsKeyDown(KEY_UP)) sprite.y -= speed;
+    if (IsKeyDown(KEY_DOWN)) sprite.y += speed;
+
+    for(size_t i = o; i < tiles.size(); i++) {
+        if (CheckCollisionRecs(rect1, rect2)) {
+            sprite.x = position.x;
+            sprite.y = position.y;
+        }
+    }
     
 }
 
