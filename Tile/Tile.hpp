@@ -13,6 +13,8 @@ public:
 
     virtual void use();
     virtual void draw();
+    virtual void onHoverChange(bool);
+    virtual bool isHover();
     virtual Rectangle getSprite();
 
 private:

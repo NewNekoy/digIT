@@ -11,9 +11,12 @@ public:
 
     void use();
     void draw();
+    void onHoverChange(bool);
+    bool isHover();
     Rectangle getSprite();
 private:
     Rectangle sprite;
+    bool onHover;
 };
 
 #endif

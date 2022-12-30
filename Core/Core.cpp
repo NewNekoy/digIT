@@ -47,6 +47,20 @@ void Core::run()
 
         camera.target = (Vector2){ player->sprite.x, player->sprite.y};
 
+        Vector2 mouse = GetScreenToWorld2D(GetMousePosition(), camera);
+
+        for(size_t i = 0; i < tiles.size(); i++)
+        {
+            if (mouse.x >= tiles[i]->getSprite().x && mouse.x <= tiles[i]->getSprite().x + tiles[i]->getSprite().width
+                && mouse.y >= tiles[i]->getSprite().y && mouse.y <= tiles[i]->getSprite().y + tiles[i]->getSprite().height)
+                    tiles[i]->onHoverChange(true);
+            else
+                tiles[i]->onHoverChange(false);
+
+            if (tiles[i]->isHover() && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+                tiles.erase(tiles.begin() + i);
+        }
+
         BeginDrawing();
 
             ClearBackground(GREEN);

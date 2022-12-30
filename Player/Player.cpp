@@ -13,10 +13,13 @@ void Player::use(std::vector<Tile *> tiles)
     position.x = sprite.x;
     position.y = sprite.y;
 
-    if (IsKeyDown(KEY_RIGHT)) sprite.x += speed;
-    if (IsKeyDown(KEY_LEFT)) sprite.x -= speed;
-    if (IsKeyDown(KEY_UP)) sprite.y -= speed;
-    if (IsKeyDown(KEY_DOWN)) sprite.y += speed;
+    if (IsKeyDown(KEY_LEFT_SHIFT)) speed = 3.f;
+    else speed = 2.f;
+
+    if (IsKeyDown(KEY_D)) sprite.x += speed;
+    if (IsKeyDown(KEY_A)) sprite.x -= speed;
+    if (IsKeyDown(KEY_W)) sprite.y -= speed;
+    if (IsKeyDown(KEY_S)) sprite.y += speed;
 
     for(size_t i = 0; i < tiles.size(); i++) {
         if (CheckCollisionRecs(sprite, tiles[i]->getSprite())) {
@@ -25,7 +28,6 @@ void Player::use(std::vector<Tile *> tiles)
             sprite.y = position.y;
         }
     }
-    
 }
 
 void Player::draw()

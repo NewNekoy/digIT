@@ -10,9 +10,20 @@ void Rock::use()
     
 }
 
+void Rock::onHoverChange(bool state)
+{
+    onHover = state;
+}
+
+bool Rock::isHover()
+{
+    return onHover;
+}
+
 void Rock::draw()
 {
-    DrawRectangleRec(sprite, BLACK);
+    if (onHover) DrawRectangleRec(sprite, RED);
+    else DrawRectangleRec(sprite, BROWN);
 }
 
 Rectangle Rock::getSprite()
